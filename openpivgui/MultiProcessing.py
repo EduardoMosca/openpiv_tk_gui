@@ -165,10 +165,10 @@ class MultiProcessing(piv_tls.Multiprocesser):
                 and self.p['background_type'] == 'minA - minB':
             self.background = gen_background(self.p, frame_a, frame_b)
 
-        frame_a = frame_a.astype(np.int32)
+        frame_a = frame_a.astype(np.intc)
         frame_a = process_images(self, frame_a, self.GUI.preprocessing_methods,
                                  background=self.background)
-        frame_b = frame_b.astype(np.int32)
+        frame_b = frame_b.astype(np.intc)
         frame_b = process_images(self, frame_b, self.GUI.preprocessing_methods,
                                  background=self.background)
 
@@ -213,8 +213,8 @@ class MultiProcessing(piv_tls.Multiprocesser):
         sizeX = corr_window_0
 
         u, v, sig2noise = piv_wdf.extended_search_area_piv(
-            frame_a.astype(np.int32),
-            frame_b.astype(np.int32),
+            frame_a.astype(np.intc),
+            frame_b.astype(np.intc),
             window_size=corr_window_0,
             overlap=overlap_0,
             search_area_size=corr_window_0,
@@ -314,8 +314,8 @@ class MultiProcessing(piv_tls.Multiprocesser):
 
                 # do the correlation
                 x, y, u, v, sig2noise, mask = piv_wdf.multipass_img_deform(
-                    frame_a.astype(np.int32),
-                    frame_b.astype(np.int32),
+                    frame_a.astype(np.intc),
+                    frame_b.astype(np.intc),
                     i,  # current iteration
                     x, y, u, v,
                     piv_wdf_settings)
