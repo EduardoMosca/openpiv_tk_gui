@@ -1259,7 +1259,7 @@ class OpenPivGui(tk.Tk):
             )
 
         print("Processing image.")
-        img = img.astype(np.intc)
+        img = img.astype(int)
         # generate background if needed
         if self.p["background_subtract"] and self.p["background_type"] != "minA - minB":
             background = gen_background(self.p)
@@ -1281,7 +1281,7 @@ class OpenPivGui(tk.Tk):
         img = process_images(
             self, img, self.preprocessing_methods, background=background
         )
-        img = img.astype(np.intc)
+        img = img.astype(int)
 
         print("Processed image.")
         print("max count: {}".format(img.max()))
